@@ -72,15 +72,9 @@
             100% { transform: rotate(360deg); }
         }
         .chat-container {
-            height: 400px;
+            max-height: 400px;
             overflow-y: auto;
             padding: 10px;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            background-color: #f9fafb;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
         }
         .chat-message {
             padding: 12px;
@@ -92,12 +86,12 @@
         .user-message {
             background-color: #E0E7FF;
             margin-right: auto;
-            align-self: flex-start;
+            text-align: right;
         }
         .model-message {
             background-color: #F3F4F6;
             margin-left: auto;
-            align-self: flex-end;
+            text-align: right;
         }
         .chat-input-form {
             display: flex;
@@ -191,14 +185,14 @@
             
             <section id="business-clinic" class="mb-20">
                 <div class="card bg-indigo-50 border-l-4 border-indigo-500">
-                    <h2 class="text-3xl font-bold mt-0 mb-6 text-center text-indigo-800">🩺 عيادة الأعمال: استشارة تفاعلية</h2>
-                    <p class="text-center text-gray-600 mb-6">هل لديك فكرة مشروع ولكن لا تعرف من أين تبدأ؟ صف فكرتك، وسيقوم مستشارنا الذكي بمناقشتها معك خطوة بخطوة لمساعدتك على بلورتها.</p>
-                    <div id="clinic-starter" class="max-w-xl mx-auto">
+                    <h2 class="text-3xl font-bold mt-0 mb-6 text-center text-indigo-800">🩺 عيادة الأعمال: خطوتك الأولى نحو النجاح</h2>
+                    <p class="text-center text-gray-600 mb-6">هل لديك فكرة مشروع ولكن لا تعرف من أين تبدأ؟ صف فكرتك أو المجال الذي تهتم به، وسيقوم مستشارنا الذكي بوضع خارطة طريق مخصصة لك تحتوي على أهم الخطوات العملية للبدء.</p>
+                    <div class="max-w-xl mx-auto">
                         <textarea id="clinic-input" placeholder="مثال: أريد أن أبدأ مشروع متجر إلكتروني متخصص في بيع القهوة المختصة، ولكن لا أعرف من أين أبدأ..." class="w-full p-2 border border-gray-300 rounded-md mb-4" rows="4"></textarea>
-                        <button id="start-clinic-chat-btn" class="w-full py-2 px-5 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 transition">💬 ابدأ الاستشارة مع المستشار الذكي</button>
+                        <button id="generate-roadmap-btn" class="w-full py-2 px-5 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 transition">🚀 أنشئ خارطة الطريق الخاصة بي</button>
                     </div>
                     <div id="clinic-container" class="mt-6 p-4 bg-white rounded-lg min-h-[100px] relative">
-                         <p class="text-center text-gray-500">ستظهر المحادثة هنا...</p>
+                        <p class="text-center text-gray-500">ستظهر خارطة الطريق هنا...</p>
                     </div>
                 </div>
             </section>
@@ -321,8 +315,8 @@
                 <div class="card my-8">
                      <h4 class="text-xl font-bold mb-6 text-center">توجهات الاستثمار الجريء في المنطقة</h4>
                      <div class="text-center mb-6">
-                         <button id="show-countries-btn" class="py-2 px-5 bg-accent-color text-white rounded-lg shadow">الدول</button>
-                         <button id="show-sectors-btn" class="py-2 px-5 bg-gray-200 text-gray-800 rounded-lg">القطاعات</button>
+                        <button id="show-countries-btn" class="py-2 px-5 bg-accent-color text-white rounded-lg shadow">الدول</button>
+                        <button id="show-sectors-btn" class="py-2 px-5 bg-gray-200 text-gray-800 rounded-lg">القطاعات</button>
                      </div>
                      <div class="relative h-96 w-full max-w-3xl mx-auto"><canvas id="investmentChart"></canvas></div>
                 </div>
@@ -442,6 +436,54 @@
                 <h3>قوة العلاقات وبيئة ريادة الأعمال</h3>
                 <p>شبكتك هي صافي ثروتك. احضر الفعاليات، وتواصل مع رواد أعمال آخرين. إذا لم تكن جاهزًا بعد، فإن أفضل طريقة للتعلم هي العمل في شركة ناشئة أخرى.</p>
                 
+                <div class="my-12">
+                    <h3>🔟 أسباب لفقدان الشغف في العمل</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                        <div class="p-4 bg-amber-50 border-r-4 border-amber-400 rounded-lg">
+                            <h4 class="font-bold text-amber-800">١- مافي تقدير</h4>
+                            <p class="mt-1 text-gray-700">يشتغل من قلبه، يعطي فوق طاقته، بس ما يسمع “يعطيك العافية” ولا حتى شكرًا؟</p>
+                        </div>
+                        <div class="p-4 bg-amber-50 border-r-4 border-amber-400 rounded-lg">
+                            <h4 class="font-bold text-amber-800">٢- مافي رؤية واضحة</h4>
+                            <p class="mt-1 text-gray-700">ليش نشتغل؟ شنو الهدف؟ وين بنوصل؟ … إذا ما عرفنا الجواب، الحماس يضيع.</p>
+                        </div>
+                        <div class="p-4 bg-amber-50 border-r-4 border-amber-400 rounded-lg">
+                            <h4 class="font-bold text-amber-800">٣- المدير المتسلط</h4>
+                            <p class="mt-1 text-gray-700">إذا كل شي يصير أوامر بدون نقاش، تحس إنك آلة مب إنسان.</p>
+                        </div>
+                        <div class="p-4 bg-amber-50 border-r-4 border-amber-400 rounded-lg">
+                            <h4 class="font-bold text-amber-800">٤- وعود تنقال وما تنفذ</h4>
+                            <p class="mt-1 text-gray-700">مرّة، مرتين مثل الترقيات … بعدين الشخص ما عاد يصدق أي كلمة.</p>
+                        </div>
+                        <div class="p-4 bg-amber-50 border-r-4 border-amber-400 rounded-lg">
+                            <h4 class="font-bold text-amber-800">٥- مافي فرص تطور</h4>
+                            <p class="mt-1 text-gray-700">نفس الشغل، نفس المكان، نفس الراتب… والكل يتطور إلا أنا؟ طبيعي أحبط.</p>
+                        </div>
+                        <div class="p-4 bg-amber-50 border-r-4 border-amber-400 rounded-lg">
+                            <h4 class="font-bold text-amber-800">٦- بيئة مليئة باللوم والخوف</h4>
+                            <p class="mt-1 text-gray-700">كل غلطة تصير فيلم رعب؟ من بيتجرأ يبدع؟</p>
+                        </div>
+                        <div class="p-4 bg-amber-50 border-r-4 border-amber-400 rounded-lg">
+                            <h4 class="font-bold text-amber-800">٧- مافي تنظيم</h4>
+                            <p class="mt-1 text-gray-700">كل يوم قرار جديد ومافي خطة، ما تعرف وين رايح… يصير الشغل عشوائي مب تحدي.</p>
+                        </div>
+                        <div class="p-4 bg-amber-50 border-r-4 border-amber-400 rounded-lg">
+                            <h4 class="font-bold text-amber-800">٨- العدل مفقود</h4>
+                            <p class="mt-1 text-gray-700">اللي يشتغل بضمير ما ينشاف، واللي عنده واسطة أو من ربع المجلس يترقى؟ كيف تبيني أتحمس؟</p>
+                        </div>
+                        <div class="p-4 bg-amber-50 border-r-4 border-amber-400 rounded-lg">
+                            <h4 class="font-bold text-amber-800">٩- مافي حد يسمعك</h4>
+                            <p class="mt-1 text-gray-700">تبغي تقول شي، عندك فكرة، عندك مشكلة… بس محد فاضي يسمع لك؟!</p>
+                        </div>
+                        <div class="p-4 bg-amber-50 border-r-4 border-amber-400 rounded-lg">
+                            <h4 class="font-bold text-amber-800">١٠- صحة الموظف النفسية ما تنحسب</h4>
+                            <p class="mt-1 text-gray-700">اللي يشتغل وهو تعبان من جو الشركة… ما يطول فيها، لو كان معاشه عالي.</p>
+                        </div>
+                    </div>
+                    <p class="mt-8 text-center text-lg font-semibold text-gray-800 bg-gray-100 p-4 rounded-lg">بيئة العمل إما ترفعك… أو تكسر المنظومة فخلونا نبني بيئة نحب نروح لها كل صبح ❤️</p>
+                </div>
+
+
                 <div class="card mt-12">
                     <h3 class="text-2xl font-bold mt-0 mb-6 text-center accent-color">✨ مستشار القرارات الصعبة</h3>
                     <p class="text-center text-gray-600 mb-6">صف قرارًا صعبًا أو مشكلة إدارية تواجهك، وسيساعدك الذكاء الاصطناعي على تحليلها باستخدام نموذج GROW.</p>
@@ -492,7 +534,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     // --- Globals ---
-    let clinicChatHistory = [];
+    let chatHistory = [];
 
     // --- Basic Page Setup ---
     const setupPage = () => {
@@ -606,33 +648,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // --- Gemini API & Helper Logic ---
     const formatResponse = (text) => {
-        // Improved formatter to handle lists and bolding
-        let html = text
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
-            .replace(/(\r\n|\n|\r)/g, "<br>"); // Line breaks
-
-        // Handle lists more robustly
-        html = html.replace(/^\* (.*$)/gm, '<ul><li>$1</li></ul>');
-        html = html.replace(/<\/ul><br><ul>/g, '');
-
-        return html;
+        let formattedText = text
+            .replace(/\*\*(.*?)\*\*/g, '<h4>$1</h4>')
+            .replace(/\* (.*?)(?:\n|\r\n|$)/g, '<li>$1</li>')
+            .replace(/(\r\n|\n|\r)/g, "<br>");
+        return formattedText.replace(/(<li>.*?<\/li>)/gs, '<ul>$1</ul>').replace(/<\/ul><br><ul>/g, '');
     };
 
     const callGeminiAPI = async (history) => {
         const payload = { contents: history };
-        const apiKey = ""; // API key will be provided by the environment
+        // The user's API key has been inserted here.
+        const apiKey = "AIzaSyCCV_aT4KWeYqps2RTuYil55438V3bxKZ8"; // هام: هذا المفتاح مكشوف للعامة. للحماية، استخدم واجهة خلفية (backend).
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
         try {
             const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-            if (!response.ok) {
-                console.error("API Error Response:", await response.text());
-                return 'عذرًا، حدث خطأ أثناء معالجة طلبك.';
-            }
             const result = await response.json();
-            return result.candidates && result.candidates.length > 0 ? result.candidates[0].content.parts[0].text : 'عذرًا، لم أتلق ردًا. حاول مرة أخرى.';
+            if (result.error) {
+                console.error("API Error:", result.error.message);
+                return `عذرًا، حدث خطأ في واجهة برمجة التطبيقات: ${result.error.message}. يرجى التحقق من مفتاح API وصلاحياته.`;
+            }
+            return result.candidates && result.candidates.length > 0 ? result.candidates[0].content.parts[0].text : 'عذرًا، حدث خطأ ولم يتم استلام استجابة.';
         } catch (error) {
             console.error("Fetch Error:", error);
-            return 'لا يمكن الوصول إلى الخدمة حاليًا.';
+            return 'لا يمكن الوصول إلى الخدمة حاليًا. تحقق من اتصالك بالإنترنت ومشكلة حظر النطاقات (CORS).';
         }
     };
 
@@ -677,7 +715,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const inputElement = document.getElementById(inputId);
             const container = document.getElementById(containerId);
             if (!inputElement.value.trim()) {
-                container.innerHTML = `<p class="text-red-500 text-center">يرجى ملء حقل الوصف أولاً.</p>`;
+                container.innerHTML = `<p class="text-red-500">يرجى ملء حقل الوصف أولاً.</p>`;
                 return;
             }
             container.innerHTML = '<div class="loader"></div>';
@@ -687,91 +725,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     };
 
-    const setupBusinessClinicChat = () => {
-        const startBtn = document.getElementById('start-clinic-chat-btn');
-        const starterDiv = document.getElementById('clinic-starter');
-        const container = document.getElementById('clinic-container');
-        const ideaInput = document.getElementById('clinic-input');
-
-        startBtn.addEventListener('click', async () => {
-            const idea = ideaInput.value.trim();
-            if (!idea) {
-                container.innerHTML = `<p class="text-red-500 text-center">يرجى وصف فكرتك أولاً لبدء المحادثة.</p>`;
-                return;
-            }
-
-            starterDiv.classList.add('hidden');
-            container.innerHTML = '<div class="loader"></div>';
-
-            const initialPrompt = `أنت مستشار أعمال ذكي ومتخصص في مساعدة رواد الأعمال في المراحل المبكرة. مهمتك هي إجراء محادثة تفاعلية مع المستخدم لبلورة فكرة مشروعه.
-            
-            بدأ المستخدم للتو المحادثة بوصف فكرته الأولية: "${idea}"
-
-            ابدأ المحادثة بالترحيب بالمستخدم، ثم اطرح عليه سؤالاً واحداً فقط، سؤالاً مفتوحاً يساعده على التفكير في الخطوة الأولى الأكثر أهمية. ركز على التحقق من صحة المشكلة أو فهم العميل المستهدف. لا تقدم خارطة طريق كاملة الآن، بل ابدأ الحوار.`;
-
-            clinicChatHistory = [{ role: 'user', parts: [{ text: initialPrompt }] }];
-            const firstResponse = await callGeminiAPI(clinicChatHistory);
-            clinicChatHistory.push({ role: 'model', parts: [{ text: firstResponse }] });
-
-            renderChatUI(container, idea, firstResponse);
-        });
-    };
-
-    const renderChatUI = (container, userIdea, firstResponse) => {
-        container.innerHTML = `
-            <div id="chat-window" class="chat-container">
-                <div class="chat-message user-message"><b>فكرتي:</b> ${userIdea}</div>
-                <div class="chat-message model-message">${formatResponse(firstResponse)}</div>
-            </div>
-            <div id="chat-loader" class="loader hidden"></div>
-            <form id="clinic-chat-form" class="chat-input-form">
-                <input type="text" id="clinic-chat-input" class="w-full p-2 border rounded-md focus:ring-2 focus:ring-indigo-500" placeholder="اكتب ردك هنا..." autocomplete="off">
-                <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-md mr-2 hover:bg-indigo-700 transition-colors shrink-0">إرسال</button>
-            </form>
-        `;
-
-        const chatForm = document.getElementById('clinic-chat-form');
-        chatForm.addEventListener('submit', handleClinicChatSubmit);
-    };
-
-    const handleClinicChatSubmit = async (e) => {
-        e.preventDefault();
-        const chatInput = document.getElementById('clinic-chat-input');
-        const chatWindow = document.getElementById('chat-window');
-        const loader = document.getElementById('chat-loader');
-        const userInput = chatInput.value.trim();
-
-        if (!userInput) return;
-
-        // Display user message
-        const userMessageDiv = document.createElement('div');
-        userMessageDiv.className = 'chat-message user-message';
-        userMessageDiv.textContent = userInput;
-        chatWindow.appendChild(userMessageDiv);
-        chatWindow.scrollTop = chatWindow.scrollHeight;
-        
-        chatInput.value = '';
-        loader.classList.remove('hidden');
-
-        // Add to history and call API
-        clinicChatHistory.push({ role: 'user', parts: [{ text: userInput }] });
-        const response = await callGeminiAPI(clinicChatHistory);
-        clinicChatHistory.push({ role: 'model', parts: [{ text: response }] });
-
-        // Display model response
-        const modelMessageDiv = document.createElement('div');
-        modelMessageDiv.className = 'chat-message model-message';
-        modelMessageDiv.innerHTML = formatResponse(response);
-        chatWindow.appendChild(modelMessageDiv);
-        
-        loader.classList.add('hidden');
-        chatWindow.scrollTop = chatWindow.scrollHeight;
-    };
-
-
     const setupAIEventListeners = () => {
-        // Business Clinic (New Chat Version)
-        setupBusinessClinicChat();
+        // Business Clinic
+        setupSimpleAIFeature('generate-roadmap-btn', 'clinic-input', 'clinic-container',
+            (idea) => `بصفتك مستشارًا في 'عيادة الأعمال'، استلمت الوصف التالي لفكرة مشروع: "${idea}".
+            قم بإنشاء 'خارطة طريق مخصصة' للبدء. يجب أن تتضمن الخارطة 3 إلى 5 خطوات رئيسية وعملية.
+            لكل خطوة، اذكر: **عنوان الخطوة**، و **شرح موجز** لما يجب فعله، و **مهمة واحدة قابلة للتنفيذ** يمكن للمؤسس البدء بها فورًا.
+            قدم الإجابة بتنسيق واضح ومنظم.`);
 
         // Chapter 1: Idea Lab
         setupSimpleAIFeature('analyze-idea-btn', 'idea-input', 'idea-interaction-container', 
@@ -783,10 +743,14 @@ document.addEventListener('DOMContentLoaded', function () {
         setupSimpleAIFeature('analyze-ocean-btn', 'idea-input', 'idea-interaction-container',
             (idea) => `بصفتك خبير استراتيجيات أعمال متخصص في استراتيجية المحيط الأزرق، قم بتحليل فكرة المشروع التالية: '${idea}'.
             بناءً على التحليل، صنف الفكرة ضمن أحد المحيطات التالية:
-            - **المحيط الأحمر:** سوق حالي شديد التنافسية.
-            - **المحيط الأزرق:** سوق جديد غير مستغل.
-            - **المحيط الأخضر:** سوق ناشئ أو متخصص (نيتش).
-            يجب أن تحتوي إجابتك على: **التصنيف**، **شرح السبب**، **مستوى المخاطرة والفرصة**، و**نصيحة استراتيجية**.
+            - **المحيط الأحمر:** سوق حالي شديد التنافسية، حيث تتنافس الشركات على نفس العملاء، والمخاطرة عالية.
+            - **المحيط الأزرق:** سوق جديد غير مستغل، لا يوجد فيه منافسة مباشرة، والفرصة للنمو عالية.
+            - **المحيط الأخضر:** سوق ناشئ أو متخصص (نيتش)، المنافسة فيه محدودة، والمخاطرة والفرصة معتدلة.
+            يجب أن تحتوي إجابتك على:
+            1. **التصنيف:** (مثال: مشروعك في المحيط الأحمر).
+            2. **شرح السبب:** (لماذا تم تصنيفه كذلك؟).
+            3. **مستوى المخاطرة والفرصة:** (وصف موجز للمخاطر والفرص).
+            4. **نصيحة استراتيجية:** (خطوة واحدة مقترحة للتحرك نحو محيط أكثر زرقة).
             قدم الإجابة بتنسيق واضح ومقسم.`);
 
         // Chapter 2: Hiring
@@ -808,7 +772,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const container = document.getElementById('ltv-cac-container');
 
             if (isNaN(arpu) || isNaN(lifetime) || isNaN(cac)) {
-                container.innerHTML = `<p class="text-red-500 text-center">يرجى إدخال قيم رقمية صحيحة في جميع الحقول.</p>`;
+                container.innerHTML = `<p class="text-red-500">يرجى إدخال قيم رقمية صحيحة في جميع الحقول.</p>`;
                 return;
             }
             
@@ -850,8 +814,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Chapter 6: Toolbox
         setupSimpleAIFeature('analyze-failure-risks-btn', 'failure-analysis-input', 'failure-analysis-container', 
-            (idea) => `بصفتك محلل مخاطر خبير، درست حالات فشل أكثر من 120 شركة ناشئة. بناءً على وصف المشروع التالي: "${idea}", حدد أهم 3 مخاطر فشل محتملة بناءً على الأسباب الشائعة.
-            لكل خطر، قدم ما يلي: **الخطر**، **لماذا ينطبق؟**، و**سؤال وقائي**.
+            (idea) => `بصفتك محلل مخاطر خبير، درست حالات فشل أكثر من 120 شركة ناشئة في Failory's Startup Cemetery. بناءً على وصف المشروع التالي: "${idea}", حدد أهم 3 مخاطر فشل محتملة بناءً على الأسباب الشائعة (مثل: بناء منتج لا يريده أحد، نفاد النقدية، فريق غير مناسب، منافسة شرسة، نموذج عمل خاطئ).
+            لكل خطر، قدم ما يلي:
+            1. **الخطر:** (اذكر الخطر بوضوح).
+            2. **لماذا ينطبق؟** (شرح موجز لسبب ارتباط هذا الخطر بالوصف المقدم).
+            3. **سؤال وقائي:** (سؤال واحد يجب أن يسأله المؤسس لنفسه لتجنب هذا الخطر).
             قدم الإجابة بتنسيق واضح ومقسم.`);
 
         setupSimpleAIFeature('generate-tool-recommendation-btn', 'tool-task-input', 'tool-recommendation-container',
