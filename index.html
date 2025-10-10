@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عرض Saudi Pro العقارية - هيكل الملكية والتمويل</title>
+    <title>عرض Saudi Pro العقارية - العرض التنفيذي المتكامل</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Cairo:wght@200..1000&display=swap');
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #1e3a8a; /* كحلي داكن للخلفية (النسخة الأصلية) */
+            background-color: #1e3a8a; /* كحلي داكن للخلفية */
             color: #f8faff; /* لون النص الأساسي فاتح */
             scroll-behavior: smooth;
         }
@@ -39,61 +39,23 @@
         h2 {
             border-bottom-color: #f97316; /* عناوين الأقسام بالبرتقالي */
         }
-        .table-header {
-            background-color: #3b4e7b; 
-            color: #f8faff;
-            font-weight: 700;
-        }
-        .table-row:nth-child(even) {
-            background-color: #31406e; 
-        }
-        /* تعديل ألوان النص داخل البطاقات لزيادة التباين */
-        .text-gray-400, .text-gray-500 {
-            color: #e5e7eb; 
+        .text-gray-400 {
+            color: #e5e7eb; /* لون فاتح جداً (Off-White) لتباين أعلى */
         }
         .font-bold {
-            color: #ffffff; 
-        }
-        .text-blue-800 {
-            color: #818cf8; /* أزرق فاتح للمهام */
+            color: #ffffff; /* لجعل الكلمات المطبوعة بالخط العريض أكثر وضوحاً */
         }
         .text-green-600 {
             color: #34d399; /* أخضر فاتح للتكاليف */
         }
-        .text-red-700 {
-            color: #fca5a5; /* أحمر فاتح للتحذيرات */
-        }
-        /* الألوان التكميلية */
-        .border-red-500 {
-            border-color: #f97316; 
-        }
         .bg-red-50 {
-            background-color: #fff7ed; /* خلفية فاتحة جدًا (كريمي) لصندوق التحذير */
+            background-color: #fff7ed; /* خلفية فاتحة جدًا (كريمي) */
         }
-        .investor-row {
-            color: #ffffff;
-            font-weight: bold;
-        }
-        /* كلاس النص داخل صندوق التحذير */
         .warning-box-text {
             color: #000000; /* اللون الأسود لطلب المستخدم */
         }
-        /* لإصلاح لون العنوان الأحمر في الصندوق الفاتح */
         .warning-box-header {
              color: #dc2626; /* أحمر داكن واضح */
-        }
-        /* لون خلفية الاستنتاج الإيجابي الجديد */
-        .bg-green-700 {
-            background-color: #047857;
-        }
-        /* إزالة تعديلات الفوتر الداكنة */
-        footer .text-gray-500, footer .text-gray-400 {
-            color: #a0a0a0; /* رمادي أهدأ للفوتر */
-        }
-        /* خط فاصل للتقسيم الجديد */
-        .divider {
-            border-top: 2px solid #3b4e7b;
-            margin: 2rem 0;
         }
     </style>
 </head>
@@ -112,127 +74,198 @@
 
     <main class="container mx-auto px-4 mt-8">
 
-        <!-- Slide 2: التعريف بالمشروع والفريق وآليات التشغيل -->
+        <!-- Slide 2: تعريف المشروع والفريق وآليات التشغيل -->
         <section class="section-card">
             <h2 class="text-3xl font-bold mb-6 border-b-2 pb-3 accent-color">التعريف بالمشروع والفريق وآليات التشغيل</h2>
             
-            <!-- تعريف المنصة -->
             <div class="mb-8">
-                <h3 class="text-xl font-semibold mb-2 text-gray-200 border-r-4 border-accent-color pr-4 italic">تعريف المنصة</h3>
-                <p class="text-gray-400 mt-3">هي منصة رقمية سعودية متخصصة في بيع وتسويق العقارات بمختلف أنواعها داخل المملكة، وتمثل نسخة سعودية مطورة من تطبيق ريل عمان، بهوية وطنية حديثة تتماشى مع التحول الرقمي في قطاع العقار السعودي.</p>
-                <p class="text-gray-400 mt-3">المنصة تهدف إلى أن تكون <span class="font-bold accent-color">الواجهة الأولى للعروض العقارية الراقية والمنظمة</span>، مع إمكانية التوسع مستقبلًا نحو الأسواق الإقليمية بعد بلوغ النضج التشغيلي المحلي.</p>
-                <p class="text-gray-400 mt-3">توفر المنصة تجربة سهلة وواضحة للعملاء، بينما تمنح المطورين والمسوّقين <span class="font-bold accent-color">واجهة متكاملة لعرض منتجاتهم بشكل راقٍ ومنظم</span>.</p>
-            </div>
-            
-            <p class="divider"></p>
-
-            <!-- الفريق المؤسس -->
-            <div class="mb-8">
-                <h3 class="text-xl font-semibold mb-3 text-gray-200">الفريق المؤسس</h3>
-                <ul class="list-disc pr-5 space-y-2 text-gray-400">
-                    <li><span class="font-bold text-white">أبو وليد:</span> المدير التنفيذي العام، مسؤول عن المبيعات والتخطيط الاستراتيجي.</li>
-                    <li><span class="font-bold text-white">المهندس وليد محمد:</span> مدير التطوير التقني، يشرف على تطوير النظام والمنصة الإلكترونية.</li>
-                    <li><span class="font-bold text-white">أسامة محمد:</span> مدير التسويق الرقمي وصناعة المحتوى، مسؤول عن الحملات الرقمية والإعلام العقاري.</li>
-                    <li><span class="font-bold text-green-600">الشريك الممول:</span> شريك استراتيجي في التأسيس والتمويل ودعم النمو التشغيلي.</li>
-                </ul>
+                <h3 class="text-xl font-semibold mb-2 text-gray-200">تعريف المنصة</h3>
+                <p class="text-gray-400 border-r-4 border-accent-color pr-4 italic">هي منصة رقمية سعودية متخصصة في بيع وتسويق العقارات بمختلف أنواعها داخل المملكة، وتمثل نسخة سعودية مطورة من تطبيق ريل عمان، بهوية وطنية حديثة تتماشى مع التحول الرقمي في قطاع العقار السعودي. المنصة تهدف إلى أن تكون الواجهة الأولى للعروض العقارية الراقية والمنظمة، مع إمكانية التوسع مستقبلًا نحو الأسواق الإقليمية بعد بلوغ النضج التشغيلي المحلي. توفر المنصة تجربة سهلة وواضحة للعملاء، بينما تمنح المطورين والمسوّقين واجهة متكاملة لعرض منتجاتهم بشكل راقٍ ومنظم.</p>
             </div>
 
-            <p class="divider"></p>
-
-            <!-- آليات التشغيل -->
-            <div class="mb-4">
-                <h3 class="text-xl font-semibold mb-3 text-gray-200">آليات التشغيل (النموذج المرن)</h3>
-                <ul class="list-disc pr-5 space-y-2 text-gray-400">
-                    <li><span class="font-bold">المكتب الرئيسي – المملكة العربية السعودية:</span> إدارة العمليات والإشراف العام على الأنشطة التجارية والتوسع المحلي.</li>
-                    <li><span class="font-bold">المكتب الإقليمي – جمهورية مصر العربية:</span> مركز التطوير التقني والتسويق الرقمي، لتحقيق جودة عالية وتكلفة تشغيلية مثالية.</li>
-                </ul>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-200">الفريق المؤسس</h3>
+                    <ul class="list-disc pr-5 space-y-2 text-gray-400">
+                        <li><span class="font-bold text-white">أبو وليد:</span> المدير التنفيذي العام، مسؤول عن المبيعات والتخطيط الاستراتيجي.</li>
+                        <li><span class="font-bold text-white">المهندس وليد محمد:</span> مدير التطوير التقني، يشرف على تطوير النظام والمنصة الإلكترونية.</li>
+                        <li><span class="font-bold text-white">أسامة محمد:</span> مدير التسويق الرقمي وصناعة المحتوى، مسؤول عن الحملات الرقمية والإعلام العقاري.</li>
+                        <li><span class="font-bold text-green-600">الشريك الممول:</span> شريك استراتيجي في التأسيس والتمويل ودعم النمو التشغيلي.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-200">آليات التشغيل (النموذج المرن)</h3>
+                    <ul class="list-disc pr-5 space-y-2 text-gray-400">
+                        <li><span class="font-bold">المكتب الرئيسي – المملكة العربية السعودية:</span> إدارة العمليات والإشراف العام على الأنشطة التجارية والتوسع المحلي.</li>
+                        <li><span class="font-bold">المكتب الإقليمي – جمهورية مصر العربية:</span> مركز التطوير التقني والتسويق الرقمي، لتحقيق جودة عالية وتكلفة تشغيلية مثالية.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <!-- Slide 3: الميزة التنافسية ونموذج العمل والإيرادات -->
+        <!-- Slide 3: الميزة التنافسية ونموذج العمل -->
         <section class="section-card">
             <h2 class="text-3xl font-bold mb-6 border-b-2 pb-3 accent-color">الميزة التنافسية ونموذج العمل</h2>
             
-            <!-- التميز التنافسي -->
-            <div class="mb-8">
-                <h3 class="text-xl font-semibold mb-3 text-gray-200 border-r-4 border-accent-color pr-4 italic">التميز التنافسي</h3>
-                <ul class="list-disc pr-5 space-y-2 text-gray-400 mt-3">
-                    <li>تصميم حديث وسهل الاستخدام يجمع بين البساطة والاحترافية.</li>
-                    <li>حضور تسويقي وإعلامي قوي عبر المعارض العقارية والحملات الرقمية المكثفة.</li>
-                    <li>رؤية استراتيجية تجعل <span class="font-bold accent-color">المنصة</span> الخيار الأول للمطور العقاري، المسوّق، والمستهلك على حد سواء.</li>
-                </ul>
-            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-200">التميز التنافسي</h3>
+                    <ul class="list-disc pr-5 space-y-2 text-gray-400">
+                        <li>تصميم حديث وسهل الاستخدام يجمع بين البساطة والاحترافية.</li>
+                        <li>حضور تسويقي وإعلامي قوي عبر المعارض العقارية والحملات الرقمية المكثفة.</li>
+                        <li>رؤية استراتيجية تجعل المنصة الخيار الأول للمطور العقاري، المسوّق، والمستهلك على حد سواء.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-200">نموذج العمل والمستهدفون</h3>
+                    <h4 class="font-bold text-accent-color mt-4 mb-2">الفئات المستهدفة:</h4>
+                    <ul class="list-disc pr-5 space-y-1 text-gray-400">
+                        <li>المطورون العقاريون بمختلف الفئات (سكني، تجاري، سياحي، فندقي).</li>
+                        <li>مكاتب التسويق والوساطة العقارية الراغبة في التحول الرقمي وزيادة حضورها.</li>
+                    </ul>
 
-            <p class="divider"></p>
-
-            <!-- نموذج العمل والمستهدفون -->
-            <div class="mb-4">
-                <h3 class="text-xl font-semibold mb-3 text-gray-200">نموذج العمل والمستهدفون</h3>
-                
-                <h4 class="font-bold text-accent-color mt-4 mb-2">الفئات المستهدفة:</h4>
-                <ul class="list-disc pr-5 space-y-1 text-gray-400">
-                    <li>المطورون العقاريون بمختلف الفئات (سكني، تجاري، سياحي، فندقي).</li>
-                    <li>مكاتب التسويق والوساطة العقارية الراغبة في التحول الرقمي وزيادة حضورها.</li>
-                </ul>
-
-                <h4 class="font-bold text-accent-color mt-4 mb-2">آلية تحقيق الدخل:</h4>
-                <ul class="list-disc pr-5 space-y-1 text-gray-400">
-                    <li>اشتراكات شهرية أو سنوية مرنة بحسب الفئة (باقة أساسية – متقدمة – مميزة).</li>
-                    <li>خدمات ترويجية إضافية للمشاريع الكبرى أو الموجهة للتملك الحر.</li>
-                    <li>تقديم خدمات إعلانية رقمية وتقارير سوقية مدفوعة القيمة.</li>
-                </ul>
+                    <h4 class="font-bold text-accent-color mt-4 mb-2">آلية تحقيق الدخل:</h4>
+                    <ul class="list-disc pr-5 space-y-1 text-gray-400">
+                        <li>اشتراكات شهرية أو سنوية مرنة بحسب الفئة (باقة أساسية – متقدمة – مميزة).</li>
+                        <li>خدمات ترويجية إضافية للمشاريع الكبرى أو الموجهة للتملك الحر.</li>
+                        <li>تقديم خدمات إعلانية رقمية وتقارير سوقية مدفوعة القيمة.</li>
+                    </ul>
+                </div>
             </div>
         </section>
-        
-        <!-- Slide 4: مراحل البناء والتأسيس والجدول الزمني (جديد) -->
+
+        <!-- Slide 4: مراحل البناء والتأسيس والجدول الزمني -->
         <section class="section-card">
             <h2 class="text-3xl font-bold mb-6 border-b-2 pb-3 accent-color">مراحل البناء والتأسيس والجدول الزمني</h2>
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-bold accent-color mb-2">المرحلة الأولى – التحضير والتأسيس (شهرين تقريبًا)</h3>
+                    <ul class="list-disc pr-5 space-y-1 text-gray-400">
+                        <li>تأسيس الكيان القانوني في السعودية ومصر.</li>
+                        <li>تجهيز الهوية البصرية والمكاتب الأساسية والفريق المؤسس.</li>
+                        <li class="font-bold text-white">الهدف: جاهزية أولية للمنصة والهيكل الإداري.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold accent-color mb-2">المرحلة الثانية – التطوير التقني الأساسي (3 – 4 أشهر)</h3>
+                    <ul class="list-disc pr-5 space-y-1 text-gray-400">
+                        <li>تطوير الموقع والتطبيق وربط قواعد البيانات.</li>
+                        <li>تصميم واجهات المستخدم ولوحات التحكم الأساسية.</li>
+                        <li>إجراء اختبارات تشغيلية أولية لضمان الاستقرار.</li>
+                        <li class="font-bold text-white">الهدف: منصة تقنية جاهزة بنسبة كبيرة مع إمكانية التطوير المستقبلي.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold accent-color mb-2">المرحلة الثالثة – الإطلاق التجريبي والتسويق الأولي (5 – 6 أشهر – ضمن العام الأول)</h3>
+                    <ul class="list-disc pr-5 space-y-1 text-gray-400">
+                        <li>تجربة المنصة في جدة، مكة، والمدينة المنورة.</li>
+                        <li>إطلاق حملات تعريفية رقمية وجذب أول مجموعة من العملاء والمطورين.</li>
+                        <li>معالجة التحسينات والثغرات التشغيلية والتقنية.</li>
+                        <li class="font-bold text-white">الهدف: بدء أولى المبيعات الفعلية وتجربة السوق المحلي.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold accent-color mb-2">المرحلة الرابعة – التوسع المحلي العام الثاني (حوالي 4 – 5 أشهر)</h3>
+                    <ul class="list-disc pr-5 space-y-1 text-gray-400">
+                        <li>دخول الرياض والمنطقة الشرقية بعد تحسين المنصة ومعالجة الثغرات.</li>
+                        <li>إضافة خصائص متقدمة مثل لوحات المطورين وأنظمة إدارة العملاء (CRM).</li>
+                        <li>تعزيز الحملات الرقمية والتسويقية للوصول إلى جمهور أوسع.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold accent-color mb-2">المرحلة الخامسة – التوسع الوطني الكامل</h3>
+                    <ul class="list-disc pr-5 space-y-1 text-gray-400">
+                        <li>تغطية جميع مناطق المملكة وبناء شبكة علاقات وطنية متكاملة.</li>
+                        <li>تحقيق استقرار كامل للعمليات التشغيلية وتهيئة المنصة لدراسة فرص التوسع الإقليمي مستقبلًا.</li>
+                        <li class="font-bold text-white">الهدف: بلوغ مستوى ريادة وطنية كاملة وجاهزية للتوسع الإقليمي.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: آلية التخارج والخطة المالية -->
+        <section class="section-card">
+            <h2 class="text-3xl font-bold mb-6 border-b-2 pb-3 accent-color">آلية التخارج والخطة المالية</h2>
             
-            <!-- المرحلة الأولى -->
-            <div class="mb-8 p-4 bg-gray-500/10 rounded-lg border-r-4 border-white/50">
-                <h3 class="text-xl font-bold mb-2 text-white">المرحلة الأولى – التحضير والتأسيس (<span class="accent-color">شهرين تقريبًا</span>)</h3>
-                <ul class="list-disc pr-5 space-y-1 text-gray-400">
-                    <li>تأسيس الكيان القانوني في السعودية ومصر.</li>
-                    <li>تجهيز الهوية البصرية والمكاتب الأساسية والفريق المؤسس.</li>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-200">آلية التخارج والمسارات المستقبلية</h3>
+                    <ul class="list-disc pr-5 space-y-2 text-gray-400">
+                        <li><span class="font-bold">الاستحواذ الكامل:</span> بيع المنصة إلى كيان استراتيجي أكبر عند بلوغ مؤشرات نمو محددة.</li>
+                        <li><span class="font-bold">تنظيم خروج الشركاء:</span> عبر اتفاقيات واضحة تشمل حقوق السحب والشراء الإجباري وحقوق التبعية.</li>
+                        <li><span class="font-bold">الطرح العام أو الجزئي:</span> خيار بديل عند تحقيق انتشار واسع وريادة وطنية مستقرة.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-200">الخطة المالية وحاجة التمويل للسنة الأولى</h3>
+                    <h4 class="font-bold text-accent-color mt-4 mb-2">التمويل المطلوب:</h4>
+                    <p class="text-gray-400">مبلغ مقترح يغطي مرحلة التأسيس والتشغيل الأولي لمدة سنة كاملة.</p>
+                    
+                    <h4 class="font-bold text-accent-color mt-4 mb-2">بنود الميزانية الرئيسية:</h4>
+                    <ul class="list-disc pr-5 space-y-1 text-gray-400">
+                        <li>المصاريف التسويقية والإعلانية المكثفة خلال السنة الأولى.</li>
+                        <li>مصاريف المكتب في السعودية (تراخيص، إيجار، رواتب، تشغيل).</li>
+                        <li>مصاريف مكتب مصر لتطوير المنصة، تشمل الرواتب التقنية، الإيجار، والتجهيزات التقنية.</li>
+                    </ul>
+                     <p class="mt-4 font-bold bg-green-600/20 text-green-300 p-3 rounded-md">الهدف من التمويل: الوصول إلى الجاهزية التشغيلية الكاملة والإطلاق التجاري الرسمي خلال فترة قصيرة من بدء التمويل.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: هيكلة الملكية والحوكمة -->
+        <section class="section-card">
+            <h2 class="text-3xl font-bold mb-6 border-b-2 pb-3 accent-color">هيكلة الملكية، الحوكمة، والاستمرارية</h2>
+
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-3 text-gray-200">هيكلة الملكية ونسب الشراكة (المبادئ العامة)</h3>
+                <ul class="list-disc pr-5 space-y-2 text-gray-400">
+                    <li>الحفاظ على حصة مؤسسية قوية لضمان تحفيز الفريق واستمراريته.</li>
+                    <li>توزيع الحصص بطريقة تعكس مساهمة كل طرف في التمويل والجهد.</li>
+                    <li>تخصيص نسبة رمزية لخيار الموظفين المستقبلي (ESOP) لتحفيز فريق العمل.</li>
                 </ul>
-                <p class="mt-2 font-semibold text-sm text-green-600">الهدف: جاهزية أولية للمنصة والهيكل الإداري.</p>
             </div>
 
-            <!-- المرحلة الثانية -->
-            <div class="mb-8 p-4 bg-gray-500/10 rounded-lg border-r-4 border-white/50">
-                <h3 class="text-xl font-bold mb-2 text-white">المرحلة الثانية – التطوير التقني الأساسي (<span class="accent-color">3 – 4 أشهر</span>)</h3>
-                <ul class="list-disc pr-5 space-y-1 text-gray-400">
-                    <li>تطوير الموقع والتطبيق وربط قواعد البيانات.</li>
-                    <li>تصميم واجهات المستخدم ولوحات التحكم الأساسية.</li>
-                    <li>إجراء اختبارات تشغيلية أولية لضمان الاستقرار.</li>
-                </ul>
-                <p class="mt-2 font-semibold text-sm text-green-600">الهدف: <span class="font-bold">منصة تقنية جاهزة بنسبة كبيرة</span> مع إمكانية التطوير المستقبلي.</p>
-            </div>
-
-            <!-- المرحلة الثالثة -->
-            <div class="mb-8 p-4 bg-gray-500/10 rounded-lg border-r-4 border-white/50">
-                <h3 class="text-xl font-bold mb-2 text-white">المرحلة الثالثة – الإطلاق التجريبي والتسويق الأولي (<span class="accent-color">5 – 6 أشهر – ضمن العام الأول</span>)</h3>
-                <ul class="list-disc pr-5 space-y-1 text-gray-400">
-                    <li>تجربة المنصة في <span class="font-bold accent-color">جدة، مكة، والمدينة المنورة</span>.</li>
-                    <li>إطلاق حملات تعريفية رقمية وجذب أول مجموعة من العملاء والمطورين.</li>
-                    <li>معالجة التحسينات والثغرات التشغيلية والتقنية.</li>
-                </ul>
-                <p class="mt-2 font-semibold text-sm text-green-600">الهدف: بدء أولى المبيعات الفعلية وتجربة السوق المحلي.</p>
-            </div>
-
-            <!-- المرحلة الرابعة -->
-            <div class="mb-8 p-4 bg-gray-500/10 rounded-lg border-r-4 border-white/50">
-                <h3 class="text-xl font-bold mb-2 text-white">المرحلة الرابعة – التوسع المحلي العام الثاني (<span class="accent-color">حوالي 4 – 5 أشهر</span>)</h3>
-                <ul class="list-disc pr-5 space-y-1 text-gray-400">
-                    <li>دخول <span class="font-bold accent-color">الرياض والمنطقة الشرقية</span> بعد تحسين المنصة ومعالجة الثغرات.</li>
-                    <li>إضافة خصائص متقدمة مثل لوحات المطورين وأنظمة إدارة العملاء (CRM).</li>
-                    <li>تعزيز الحملات الرقمية والتسويقية للوصول إلى جمهور أوسع.</li>
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-3 text-gray-200">حوكمة الشراكة وحل الخلافات</h3>
+                <ul class="list-disc pr-5 space-y-2 text-gray-400">
+                    <li>الإدارة التنفيذية للمؤسسين طالما احتفظوا بحصة الأغلبية.</li>
+                    <li>للمستثمر حق الاعتراض على القرارات الجوهرية ذات التأثير المالي المباشر.</li>
+                    <li>مجلس إدارة مصغّر لمتابعة الاتجاه الاستراتيجي.</li>
+                    <li>اعتماد التحكيم التجاري كآلية لحل النزاعات النهائية.</li>
                 </ul>
             </div>
             
-            <!-- المرحلة الخامسة -->
-            <div class="mb-4 p-4 bg-gray-500/10 rounded-lg border-r-4 border-white/50">
-                <h3 class="text-xl font-bold mb-2 text-white">المرحلة الخامسة – التوسع الوطني الكامل</h3>
-                <ul class="list-disc pr-5 space-y-1 text-gray-400">
-                    <li>تغطية جميع مناطق المملكة وبناء شبكة علاقات وطنية متكاملة.</li>
-                    <li>تحقيق استقرار كامل للعمليات التشغيلية وتهيئة المنصة لد
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-3 text-gray-200">نصائح لضمان استمرارية العمل والشراكة</h3>
+                <ul class="list-disc pr-5 space-y-2 text-gray-400">
+                    <li>الشفافية الكاملة في التقارير التشغيلية والمالية.</li>
+                    <li>توثيق الحصص والصلاحيات وآليات التخارج في عقد واضح ومحدث.</li>
+                    <li>تطبيق نظام تملك تدريجي للحصص يربط استمرار الشركاء بتحقيق الأهداف المرحلية.</li>
+                </ul>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-3 text-gray-200">آلية الاستحقاق (Vesting)</h3>
+                <ul class="list-disc pr-5 space-y-2 text-gray-400">
+                    <li>يمكن النقاش حول نظام تملك تدريجي لحصص المؤسسين على مدى فترة محددة باتفاقية واضحة.</li>
+                    <li>فترة حجز أولية (Cliff) تليها استحقاقات دورية لضمان التزام المؤسسين والمطورين الأساسيين.</li>
+                </ul>
+            </div>
+            
+            <div class="bg-red-50 border-r-4 border-accent-color p-4 rounded-md mt-6">
+                <h3 class="text-xl font-bold warning-box-header mb-2">⚠ تحذير استراتيجي</h3>
+                <p class="warning-box-text">ضرورة الحذر من فقدان السيطرة الإدارية للمؤسسين عند التوسع بجولات تمويل مستقبلية.</p>
+                <p class="warning-box-text mt-2 font-bold">التوصية بالتفاوض الذكي على نسب المستثمر لضمان توازن القرار وتحفيز الفريق المؤسس.</p>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="text-center text-gray-500 py-6 text-sm">
+        <p class="text-gray-400">&copy; 2025 Saudi Pro - جميع الحقوق محفوظة. التقرير معدّ للعرض الداخلي.</p>
+        <p class="text-gray-400 mt-2">إعداد: محمد المصعبي</p>
+    </footer>
+
+</body>
+</html>
+
