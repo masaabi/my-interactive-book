@@ -3,269 +3,722 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عرض Saudi Pro العقارية - العرض التنفيذي المتكامل</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>بوابة الترميز العقاري - رؤية 2040</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Cairo:wght@200..1000&display=swap');
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #1e3a8a; /* كحلي داكن للخلفية */
-            color: #f8faff; /* لون النص الأساسي فاتح */
-            scroll-behavior: smooth;
-        }
-        .container {
-            max-width: 1000px;
-        }
-        .section-card {
-            background: #2b3a67; /* لون أغمق قليلاً من الخلفية للبطاقات */
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            padding: 3rem 1.5rem;
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease;
-        }
-        .section-card:hover {
-            transform: translateY(-5px);
-        }
-        .header-bg {
-            background-color: #1e3a8a; /* نفس لون الخلفية */
-            color: white;
-            padding: 3rem 0;
-            border-bottom: 5px solid #f97316; /* خط برتقالي ساطع أسفل الهيدر */
-        }
-        .accent-color {
-            color: #f97316; /* برتقالي ساطع */
-        }
-        h2 {
-            border-bottom-color: #f97316; /* عناوين الأقسام بالبرتقالي */
-        }
-        .text-gray-400 {
-            color: #e5e7eb; /* لون فاتح جداً (Off-White) لتباين أعلى */
-        }
-        .font-bold {
-            color: #ffffff; /* لجعل الكلمات المطبوعة بالخط العريض أكثر وضوحاً */
-        }
-        .text-green-600 {
-            color: #34d399; /* أخضر فاتح للتكاليف */
-        }
-        .bg-red-50 {
-            background-color: #fff7ed; /* خلفية فاتحة جدًا (كريمي) */
-        }
-        .warning-box-text {
-            color: #000000; /* اللون الأسود لطلب المستخدم */
-        }
-        .warning-box-header {
-             color: #dc2626; /* أحمر داكن واضح */
-        }
+/* THEME: Cyber-Estate 2040 (Dark Glassmorphism) */
+
+:root {
+    --bg-deep: #050A14;
+    --bg-panel: rgba(16, 24, 40, 0.85); /* Increased opacity for better visibility */
+    --glass-border: rgba(255, 255, 255, 0.1);
+    
+    --neon-primary: #00F0FF; /* Electric Cyan */
+    --neon-secondary: #7000FF; /* Electric Purple */
+    --neon-accent: #FFD700; /* Holographic Gold */
+    --text-main: #FFFFFF;
+    --text-dim: #D0D8E0; /* Lightened for better readability */
+    
+    --shadow-glow: 0 0 20px rgba(0, 240, 255, 0.15);
+    --card-gradient: linear-gradient(145deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%);
+}
+
+* { box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-deep);
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(112, 0, 255, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(0, 240, 255, 0.15) 0%, transparent 25%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin: 0;
+    min-height: 100vh;
+    padding: 60px 0;
+    font-family: 'Cairo', sans-serif;
+    color: var(--text-main);
+    direction: rtl;
+    overflow-x: hidden;
+}
+
+/* Background Grid Mesh */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(var(--glass-border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.15;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.slide-container {
+    background: var(--bg-panel);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.05);
+    display: flex;
+    flex-direction: column;
+    min-height: 720px; /* Changed to min-height */
+    justify-content: center;
+    overflow: hidden;
+    padding: 60px;
+    position: relative;
+    width: 1280px;
+    max-width: 95vw;
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+}
+
+/* HUD Corners */
+.slide-container::after {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border: 1px solid transparent;
+    border-top: 1px solid var(--neon-primary);
+    border-bottom: 1px solid var(--neon-primary);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1;
+    clip-path: polygon(0 0, 10% 0, 10% 100%, 0 100%, 90% 100%, 100% 100%, 100% 0, 90% 0);
+}
+
+.slide-container:hover {
+    box-shadow: var(--shadow-glow);
+    border-color: rgba(0, 240, 255, 0.3);
+}
+
+.slide-container > * { position: relative; z-index: 2; }
+
+h1 {
+    font-size: 82px; font-weight: 900; margin-bottom: 10px; margin-top: 0;
+    background: linear-gradient(180deg, #FFFFFF 0%, #A0AAB5 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(255,255,255,0.1);
+    letter-spacing: -2px;
+}
+
+/* Thix Brand Style */
+.thix-logo {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #fff, var(--neon-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+    display: inline-block;
+}
+
+.slide-title {
+    font-size: 38px; font-weight: 700; margin-bottom: 40px; color: var(--neon-primary);
+    border-right: 4px solid var(--neon-accent); padding-right: 25px; width: 100%; text-align: right;
+    background: linear-gradient(90deg, rgba(0, 240, 255, 0.05), transparent);
+    padding-top: 15px; padding-bottom: 15px; border-radius: 4px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    display: flex; align-items: center; justify-content: space-between;
+}
+
+p, li, td, th { font-size: 18px; line-height: 1.8; color: var(--text-dim); }
+strong { color: var(--neon-primary); font-weight: 700; }
+
+.content-area { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; width: 100%; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; height: 100%; align-items: center; }
+.tiled-content { display: flex; gap: 25px; justify-content: center; width: 100%; }
+
+/* Futuristic Cards */
+.tile, .market-stat-box, .risk-card, .bar-chart-row .bar-track, .content-box {
+    background: var(--card-gradient);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.tile {
+    padding: 30px;
+    flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative; overflow: hidden;
+}
+
+.tile::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-primary), transparent);
+    transform: translateX(-100%); transition: 0.5s;
+}
+
+.tile:hover { 
+    transform: translateY(-10px); 
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+}
+.tile:hover::before { transform: translateX(100%); }
+
+.tile h3 { color: var(--text-main); font-size: 20px; margin: 20px 0 10px 0; font-weight: 700; }
+.tile .icon {
+    font-size: 38px; 
+    color: var(--neon-primary);
+    text-shadow: 0 0 15px var(--neon-primary);
+    margin-bottom: 15px;
+}
+
+/* Tables */
+.table-layout table { width: 100%; border-collapse: separate; border-spacing: 0 10px; }
+.table-layout th {
+    text-align: right; color: var(--neon-primary); font-size: 16px; padding: 15px;
+    border-bottom: 1px solid var(--glass-border); font-weight: 600; letter-spacing: 1px;
+}
+.table-layout td {
+    background: rgba(255,255,255,0.03); padding: 15px; color: var(--text-dim);
+    border: 1px solid transparent; border-radius: 8px;
+    transition: 0.3s;
+}
+.table-layout tr:hover td {
+    background: rgba(0, 240, 255, 0.05);
+    border-color: rgba(0, 240, 255, 0.2);
+    color: #fff;
+}
+
+/* Lists */
+ul { list-style: none; padding: 0; }
+ul li { position: relative; padding-right: 25px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.02); padding-bottom: 8px;}
+ul li::before { content: '>'; color: var(--neon-accent); font-family: monospace; font-weight: bold; position: absolute; right: 0; top: 5px; }
+
+/* Market Stats */
+.market-stat-box { padding: 25px; display: flex; flex-direction: column; justify-content: space-between; }
+.market-stat-box h3 { color: var(--neon-primary) !important; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; }
+.market-stat-box .stat-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;
+}
+.market-stat-box .stat-value { font-size: 22px; font-weight: 700; color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+.market-stat-box .growth-rate {
+    color: var(--neon-accent); font-size: 14px; font-family: monospace;
+    background: rgba(255, 215, 0, 0.1); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+/* Risk Cards */
+.risk-card { padding: 20px; border-top: 3px solid transparent; transition: 0.3s; }
+.risk-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.risk-owner { margin-top: auto; font-size: 11px; background: rgba(255,255,255,0.05); padding: 5px 10px; border-radius: 4px; color: var(--neon-primary); font-family: monospace; }
+
+/* Charts */
+.bar-chart-row { display: flex; align-items: center; margin-bottom: 15px; }
+.bar-label { width: 120px; font-size: 14px; font-weight: bold; color: var(--text-dim); }
+.bar-track { flex-grow: 1; background: rgba(0,0,0,0.3); border-radius: 4px; height: 12px; margin: 0 15px; overflow: hidden; border: none; }
+.bar-fill { 
+    height: 100%; border-radius: 4px; 
+    background: linear-gradient(90deg, var(--neon-primary), #00A8FF);
+    box-shadow: 0 0 10px var(--neon-primary);
+    position: relative;
+}
+.bar-fill::after {
+    content: ''; position: absolute; right: 0; top:0; height: 100%; width: 2px; background: #fff; box-shadow: 0 0 5px #fff;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.4); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0, 240, 255, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.floating-icon { animation: float 4s ease-in-out infinite; }
+
+/* Accent Text */
+.text-accent { color: var(--neon-accent); }
+.text-grad { background: linear-gradient(45deg, var(--neon-primary), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
     </style>
 </head>
-<body class="selection:bg-orange-300">
+<body>
 
-    <!-- Section 1: الرؤية وملخص المشروع -->
-    <header class="header-bg">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-2 text-white">Saudi Pro العقارية</h1>
-            <p class="text-xl md:text-2xl font-light max-w-3xl mx-auto text-gray-200">المنصة الرقمية السعودية لعرض وتسويق المشاريع العقارية</p>
-            <div class="mt-8">
-                <span class="inline-block px-4 py-2 bg-accent-color text-white font-bold rounded-full shadow-lg">العرض التنفيذي المتكامل</span>
+<!-- Slide 1: Title Slide -->
+<div class="slide-container" id="slide1">
+    <div class="content-area" style="text-align: center; align-items: center; z-index: 10;">
+        <div class="floating-icon" style="width: 140px; height: 140px; background: radial-gradient(circle, rgba(0,240,255,0.2), transparent); border: 1px solid var(--neon-primary); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 30px; box-shadow: 0 0 30px rgba(0,240,255,0.3);">
+            <i class="fa-solid fa-cube" style="font-size: 40px; color: var(--neon-primary); margin-bottom: 5px;"></i>
+            <span class="thix-logo" style="font-size: 28px;">THIX</span>
+        </div>
+        <h1><span class="thix-logo" style="font-size: 82px;">THIX</span><br>بوابة الترميز العقاري</h1>
+        <p style="font-size: 24px; max-width: 800px; color: var(--neon-primary); letter-spacing: 1px; text-transform: uppercase;">نظام الترميز العقاري</p>
+        <p style="font-size: 18px; color: var(--text-dim); margin-top: 10px;">بنية تحتية رقمية لملكية المستقبل</p>
+        <p style="font-size: 14px; color: var(--text-dim); font-family: monospace; margin-top: 5px;">www.thix.sa</p>
+        
+        <div style="margin-top: 40px; display: flex; gap: 10px;">
+            <div style="width: 10px; height: 10px; background: var(--neon-primary); border-radius: 50%;"></div>
+            <div style="width: 10px; height: 10px; background: var(--neon-primary); opacity: 0.5; border-radius: 50%;"></div>
+            <div style="width: 10px; height: 10px; background: var(--neon-primary); opacity: 0.2; border-radius: 50%;"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 2: The Concept Story -->
+<div class="slide-container" id="slide2">
+    <h2 class="slide-title">1. تحويل العقار إلى ثروة رقمية</h2>
+    <div class="content-area">
+        <p style="font-size: 20px; text-align: center; width: 100%; margin-bottom: 40px; color: #fff;">
+            نظام <span style="color: var(--neon-primary);">تجزئة الأصول</span> القائم على البلوك تشين، لتحويل الجمود إلى سيولة فورية.
+        </p>
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-microchip"></i></div>
+                <h3>الترميز الرقمي</h3>
+                <p>تحويل الصكوك إلى حصص مشفرة.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-fingerprint"></i></div>
+                <h3>سهولة الوصول</h3>
+                <p>استثمار يبدأ من مبالغ رمزية.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-network-wired"></i></div>
+                <h3>اللامركزية المنظمة</h3>
+                <p>شفافية مطلقة عبر السجل الموزع.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>عوائد ذكية</h3>
+                <p>توزيع تلقائي عبر العقود الذكية.</p>
             </div>
         </div>
-    </header>
+    </div>
+</div>
 
-    <main class="container mx-auto px-4 mt-8">
-
-        <!-- Slide 2: تعريف المشروع والفريق وآليات التشغيل -->
-        <section class="section-card">
-            <h2 class="text-3xl font-bold mb-6 border-b-2 pb-3 accent-color">التعريف بالمشروع والفريق وآليات التشغيل</h2>
+<!-- Slide 3: Vision & Summary -->
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">2. الرؤية والملخص التنفيذي</h2>
+    <div class="content-area">
+        <div style="display: flex; gap: 30px; width: 100%; align-items: stretch;">
+            <div style="flex: 1; padding: 30px; border-radius: 16px; border: 1px solid rgba(231, 76, 60, 0.3); background: linear-gradient(180deg, rgba(231,76,60,0.05), transparent); position: relative; overflow: hidden;">
+                <div style="position: absolute; right: -20px; top: -20px; font-size: 100px; color: rgba(231,76,60,0.05);"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <h4 style="color: #FF5555; font-size: 24px; margin: 0 0 20px 0; border-bottom: 1px solid rgba(255,85,85,0.2); padding-bottom: 10px;">خطأ: انعدام السيولة</h4>
+                <p style="color: var(--text-dim);">جمود الأصول العقارية التقليدية، بطء الإجراءات، وصعوبة التخارج السريع، مما يسبب تجميد رؤوس الأموال لسنوات.</p>
+            </div>
             
-            <div class="mb-8">
-                <h3 class="text-xl font-semibold mb-2 text-gray-200">تعريف المنصة</h3>
-                <p class="text-gray-400 border-r-4 border-accent-color pr-4 italic">هي منصة رقمية سعودية متخصصة في بيع وتسويق العقارات بمختلف أنواعها داخل المملكة، وتمثل نسخة سعودية مطورة من تطبيق <span class="accent-color font-bold">ريل عمان</span>، بهوية وطنية حديثة تتماشى مع التحول الرقمي في قطاع العقار السعودي. المنصة تهدف إلى أن تكون الواجهة الأولى للعروض العقارية الراقية والمنظمة، مع إمكانية التوسع مستقبلًا نحو الأسواق الإقليمية بعد بلوغ النضج التشغيلي المحلي. توفر المنصة تجربة سهلة وواضحة للعملاء، بينما تمنح المطورين والمسوّقين واجهة متكاملة لعرض منتجاتهم بشكل راقٍ ومنظم.</p>
+            <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+                <i class="fa-solid fa-arrow-left" style="font-size: 30px; color: var(--neon-primary); opacity: 0.5;"></i>
             </div>
 
-            <div class="grid md:grid-cols-1 gap-8">
-                <div>
-                    <h3 class="text-xl font-semibold mb-3 text-gray-200">الفريق المؤسس</h3>
-                    <ul class="list-disc pr-5 space-y-4 text-gray-400">
-                        <li><span class="font-bold text-white">أبو وليد:</span> المدير التنفيذي العام، مسؤول عن المبيعات والتخطيط الاستراتيجي. بخلفية عقارية متنوعة تمتد لأكثر من عشرون عام في التسويق العقاري والتطوير العقاري وكذلك التمويل العقاري للأفراد من خلال العمل لمدة 10 سنوات مع مصرف الراجحي.</li>
-                        <li><span class="font-bold text-white">المهندس وليد محمد:</span> مدير التطوير التقني، يشرف على تطوير النظام والمنصة الإلكترونية. وهو مهندس تقنية صناعية، وصاحب ابتكارات تقنية سابقة اثناء دراسته، وعمل لمدة ما تقارب أكثر من 10 سنوات كمسئول التقنية بشركة رساميل للعقار، وأيضا لديه تجربة قصيرة لمدة سنتين في تأسيس تطبيق لوجستي لخدمة السيارات، والاشراف على تأسيس فريق مصري لبناء وبرمجتها.</li>
-                        <li><span class="font-bold text-white">أسامة محمد:</span> مدير التسويق الرقمي وصناعة المحتوى، مسؤول عن الحملات الرقمية والإعلام العقاري. وهو صاحب مؤهل شريعة وقانون، ولكن عمل بمجال التجارة الاكترونية، كمدير ومؤسس، وذو خلفية عملية واكاديمية في مجال التسويق الرقمي وإدارة الحملات المدفوعة بفاعلية، وأيضا هو صاحب مبادرة والمشرف على تأسيس تطبيق تقني لمدة عامي، وهو تطبيق للخدمات اللوجستية لقطاع المقاولات والمعدات (شراكة سعودية بالشراكة مع شركة سنونو القطرية).</li>
-                        <li><span class="font-bold text-green-600">الشريك الممول:</span> شريك استراتيجي في التأسيس والتمويل ودعم النمو التشغيلي.</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold mb-3 text-gray-200">آليات التشغيل (النموذج المرن)</h3>
-                    <ul class="list-disc pr-5 space-y-2 text-gray-400">
-                        <li><span class="font-bold">المكتب الرئيسي – المملكة العربية السعودية:</span> إدارة العمليات والإشراف العام على الأنشطة التجارية والتوسع المحلي.</li>
-                        <li><span class="font-bold">المكتب الإقليمي – جمهورية مصر العربية:</span> مركز التطوير التقني والتسويق الرقمي، لتحقيق جودة عالية وتكلفة تشغيلية مثالية.</li>
-                    </ul>
-                </div>
+            <div style="flex: 1; padding: 30px; border-radius: 16px; border: 1px solid var(--neon-primary); background: linear-gradient(180deg, rgba(0,240,255,0.05), transparent); position: relative; overflow: hidden; box-shadow: 0 0 20px rgba(0,240,255,0.05);">
+                <div style="position: absolute; right: -20px; top: -20px; font-size: 100px; color: rgba(0,240,255,0.05);"><i class="fa-solid fa-link"></i></div>
+                <h4 style="color: var(--neon-primary); font-size: 24px; margin: 0 0 20px 0; border-bottom: 1px solid rgba(0,240,255,0.2); padding-bottom: 10px;">الحل: الترميز العقاري</h4>
+                <p style="color: var(--text-main);">منصة تداول لحظية مرتبطة بالسجل العقاري، تمكن من تداول الحصص المجزأة وكأنها أسهم في سوق مفتوح.</p>
             </div>
-        </section>
+        </div>
+    </div>
+</div>
 
-        <!-- Slide 3: الميزة التنافسية ونموذج العمل -->
-        <section class="section-card">
-            <h2 class="text-3xl font-bold mb-6 border-b-2 pb-3 accent-color">الميزة التنافسية ونموذج العمل</h2>
+<!-- Slide 4: Customer Journey -->
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">3. رحلة العميل (واجهة التفاعل)</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div style="background: rgba(0,0,0,0.3); border: 1px solid var(--neon-primary); border-radius: 12px; padding: 30px; position: relative;">
+                <div style="position: absolute; top: -15px; right: 20px; background: var(--bg-deep); padding: 0 10px; color: var(--neon-primary); border: 1px solid var(--neon-primary);">المدخلات: مالك الأصل</div>
+                <h3 style="color: #fff; text-align: center; margin-bottom: 20px;"><i class="fa-solid fa-building"></i> مالك الأصل</h3>
+                <ul style="border-right: 2px solid var(--neon-primary); padding-right: 20px;">
+                    <li>طلب إدراج رقمي.</li>
+                    <li>إنشاء عقد ذكي (SPV).</li>
+                    <li>إصدار الحصص (توليد الرموز).</li>
+                </ul>
+            </div>
             
-            <div class="grid md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-xl font-semibold mb-3 text-gray-200">التميز التنافسي</h3>
-                    <ul class="list-disc pr-5 space-y-2 text-gray-400">
-                        <li>تصميم حديث وسهل الاستخدام يجمع بين البساطة والاحترافية.</li>
-                        <li>حضور تسويقي وإعلامي قوي عبر المعارض العقارية والحملات الرقمية المكثفة.</li>
-                        <li>رؤية استراتيجية تجعل المنصة الخيار الأول للمطور العقاري، المسوّق، والمستهلك على حد سواء.</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold mb-3 text-gray-200">نموذج العمل والمستهدفون</h3>
-                    <h4 class="font-bold text-accent-color mt-4 mb-2">الفئات المستهدفة:</h4>
-                    <ul class="list-disc pr-5 space-y-1 text-gray-400">
-                        <li>المطورون العقاريون بمختلف الفئات (سكني، تجاري، سياحي، فندقي).</li>
-                        <li>مكاتب التسويق والوساطة العقارية الراغبة في التحول الرقمي وزيادة حضورها.</li>
-                    </ul>
-
-                    <h4 class="font-bold text-accent-color mt-4 mb-2">آلية تحقيق الدخل:</h4>
-                    <ul class="list-disc pr-5 space-y-1 text-gray-400">
-                        <li>اشتراكات شهرية أو سنوية مرنة بحسب الفئة (باقة أساسية – متقدمة – مميزة).</li>
-                        <li>خدمات ترويجية إضافية للمشاريع الكبرى أو الموجهة للتملك الحر.</li>
-                        <li>تقديم خدمات إعلانية رقمية وتقارير سوقية مدفوعة القيمة.</li>
-                    </ul>
-                </div>
+            <div style="background: rgba(0,0,0,0.3); border: 1px solid var(--neon-accent); border-radius: 12px; padding: 30px; position: relative;">
+                <div style="position: absolute; top: -15px; right: 20px; background: var(--bg-deep); padding: 0 10px; color: var(--neon-accent); border: 1px solid var(--neon-accent);">المخرجات: المستثمر</div>
+                <h3 style="color: #fff; text-align: center; margin-bottom: 20px;"><i class="fa-solid fa-user-astronaut"></i> المستثمر</h3>
+                <ul style="border-right: 2px solid var(--neon-accent); padding-right: 20px;">
+                    <li style="border-color: rgba(255,215,0,0.2);">التحقق (نفاذ).</li>
+                    <li style="border-color: rgba(255,215,0,0.2);">شراء الوحدات (اكتتاب).</li>
+                    <li style="border-color: rgba(255,215,0,0.2);">تداول فوري (نظير لنظير).</li>
+                </ul>
             </div>
-        </section>
+        </div>
+    </div>
+</div>
 
-        <!-- Slide 4: مراحل البناء والتأسيس والجدول الزمني -->
-        <section class="section-card">
-            <h2 class="text-3xl font-bold mb-6 border-b-2 pb-3 accent-color">مراحل البناء والتأسيس والجدول الزمني</h2>
-            <div class="space-y-6">
-                <div>
-                    <h3 class="text-xl font-bold accent-color mb-2">المرحلة الأولى – التحضير والتأسيس (شهرين تقريبًا)</h3>
-                    <ul class="list-disc pr-5 space-y-1 text-gray-400">
-                        <li>تأسيس الكيان القانوني في السعودية ومصر.</li>
-                        <li>تجهيز الهوية البصرية والمكاتب الأساسية والفريق المؤسس.</li>
-                        <li class="font-bold text-white">الهدف: جاهزية أولية للمنصة والهيكل الإداري.</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold accent-color mb-2">المرحلة الثانية – التطوير التقني الأساسي (3 – 4 أشهر)</h3>
-                    <ul class="list-disc pr-5 space-y-1 text-gray-400">
-                        <li>تطوير الموقع والتطبيق وربط قواعد البيانات.</li>
-                        <li>تصميم واجهات المستخدم ولوحات التحكم الأساسية.</li>
-                        <li>إجراء اختبارات تشغيلية أولية لضمان الاستقرار.</li>
-                        <li class="font-bold text-white">الهدف: منصة تقنية جاهزة بنسبة كبيرة مع إمكانية التطوير المستقبلي.</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold accent-color mb-2">المرحلة الثالثة – الإطلاق التجريبي والتسويق الأولي (5 – 6 أشهر – ضمن العام الأول)</h3>
-                    <ul class="list-disc pr-5 space-y-1 text-gray-400">
-                        <li>تجربة المنصة في جدة، مكة، والمدينة المنورة.</li>
-                        <li>إطلاق حملات تعريفية رقمية وجذب أول مجموعة من العملاء والمطورين.</li>
-                        <li>معالجة التحسينات والثغرات التشغيلية والتقنية.</li>
-                        <li class="font-bold text-white">الهدف: بدء أولى المبيعات الفعلية وتجربة السوق المحلي.</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold accent-color mb-2">المرحلة الرابعة – التوسع المحلي العام الثاني (حوالي 4 – 5 أشهر)</h3>
-                    <ul class="list-disc pr-5 space-y-1 text-gray-400">
-                        <li>دخول الرياض والمنطقة الشرقية بعد تحسين المنصة ومعالجة الثغرات.</li>
-                        <li>إضافة خصائص متقدمة مثل لوحات المطورين وأنظمة إدارة العملاء (CRM).</li>
-                        <li>تعزيز الحملات الرقمية والتسويقية للوصول إلى جمهور أوسع.</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold accent-color mb-2">المرحلة الخامسة – التوسع الوطني الكامل</h3>
-                    <ul class="list-disc pr-5 space-y-1 text-gray-400">
-                        <li>تغطية جميع مناطق المملكة وبناء شبكة علاقات وطنية متكاملة.</li>
-                        <li>تحقيق استقرار كامل للعمليات التشغيلية وتهيئة المنصة لدراسة فرص التوسع الإقليمي مستقبلًا.</li>
-                        <li class="font-bold text-white">الهدف: بلوغ مستوى ريادة وطنية كاملة وجاهزية للتوسع الإقليمي.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+<!-- Slide 5: Compliance Matrix -->
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">4. مصفوفة الامتثال</h2>
+    <div class="content-area">
+        <div class="table-layout">
+            <table>
+                <thead><tr><th>الكيان (العقدة)</th><th>الوظيفة (الدور)</th><th>النظام</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><strong>الهيئة العامة للعقار</strong></td>
+                        <td>المشرف العام (التشريع)</td>
+                        <td>تنظيم المعايير وحماية البيانات.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>السجل العقاري</strong></td>
+                        <td>التوثيق (التحقق)</td>
+                        <td>إصدار معرف الأصل الرقمي (الهوية الرقمية) - 168,480 سجل.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--neon-primary);"><strong class="thix-logo" style="font-size: 18px;">THIX</strong> <strong>(المنصة)</strong></td>
+                        <td style="color: var(--neon-primary);">المشغل</td>
+                        <td>بناء واجهات الربط، العقود الذكية، وواجهة التداول.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>المطورون</strong></td>
+                        <td>المزود (مزود الأصل)</td>
+                        <td>توفير السيولة العقارية والبيانات التشغيلية.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
-        <!-- Slide 5: آلية التخارج والخطة المالية -->
-        <section class="section-card">
-            <h2 class="text-3xl font-bold mb-6 border-b-2 pb-3 accent-color">آلية التخارج والخطة المالية</h2>
+<!-- Slide 6: National Infrastructure News (Updated) -->
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">5. البنية الوطنية للترميز (إعلان رسمي)</h2>
+    <div class="content-area">
+        <div style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(112, 0, 255, 0.1)); border: 1px solid var(--neon-primary); border-radius: 20px; padding: 40px; position: relative; overflow: hidden;">
+            <!-- Background Decoration -->
+            <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: var(--neon-primary); opacity: 0.1; border-radius: 50%; filter: blur(40px);"></div>
             
-            <div class="grid md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-xl font-semibold mb-3 text-gray-200">آلية التخارج والمسارات المستقبلية</h3>
-                    <ul class="list-disc pr-5 space-y-2 text-gray-400">
-                        <li><span class="font-bold">الاستحواذ الكامل:</span> بيع المنصة إلى كيان استراتيجي أكبر عند بلوغ مؤشرات نمو محددة.</li>
-                        <li><span class="font-bold">تنظيم خروج الشركاء:</span> عبر اتفاقيات واضحة تشمل حقوق السحب والشراء الإجباري وحقوق التبعية.</li>
-                        <li><span class="font-bold">الطرح العام أو الجزئي:</span> خيار بديل عند تحقيق انتشار واسع وريادة وطنية مستقرة.</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold mb-3 text-gray-200">الخطة المالية وحاجة التمويل للسنة الأولى</h3>
-                    <h4 class="font-bold text-accent-color mt-4 mb-2">التمويل المطلوب:</h4>
-                    <p class="text-gray-400">مبلغ مقترح يغطي مرحلة التأسيس والتشغيل الأولي لمدة سنة كاملة.</p>
+            <div style="display: flex; gap: 40px; align-items: center;">
+                <div style="flex: 2;">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <span style="background: var(--neon-primary); color: #000; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 14px;">عاجل</span>
+                        <h3 style="color: #fff; font-size: 32px; margin: 0;">السجل العقاري يبدأ تطوير البنية الوطنية</h3>
+                    </div>
+                    <p style="font-size: 20px; color: var(--text-main); line-height: 1.6;">
+                        أعلنت الهيئة العامة للعقار بالتعاون مع السجل العقاري عن بدء تطوير <strong style="color: var(--neon-accent);">البنية الوطنية لترميز الأصول العقارية</strong>، لدمج بيانات الملكية الموثقة مع تقنيات البلوك تشين والعقود الذكية.
+                    </p>
                     
-                    <h4 class="font-bold text-accent-color mt-4 mb-2">بنود الميزانية الرئيسية:</h4>
-                    <ul class="list-disc pr-5 space-y-1 text-gray-400">
-                        <li>المصاريف التسويقية والإعلانية المكثفة خلال السنة الأولى.</li>
-                        <li>مصاريف المكتب في السعودية (تراخيص، إيجار، رواتب، تشغيل).</li>
-                        <li>مصاريف مكتب مصر لتطوير المنصة، تشمل الرواتب التقنية، الإيجار، والتجهيزات التقنية.</li>
+                    <div style="margin-top: 30px; display: flex; gap: 20px;">
+                        <div style="background: rgba(0,0,0,0.3); padding: 15px 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                            <div style="font-size: 12px; color: var(--text-dim); margin-bottom: 5px;">الشريك التقني</div>
+                            <div style="font-size: 18px; font-weight: bold; color: #fff;">SettleMint <i class="fa-solid fa-code-branch" style="color: var(--neon-secondary); margin-right: 10px;"></i></div>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 15px 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                            <div style="font-size: 12px; color: var(--text-dim); margin-bottom: 5px;">الهدف الاستراتيجي</div>
+                            <div style="font-size: 18px; font-weight: bold; color: #fff;">تمكين الملكية الجزئية <i class="fa-solid fa-users-viewfinder" style="color: var(--neon-accent); margin-right: 10px;"></i></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="flex: 1; border-right: 2px solid rgba(255,255,255,0.1); padding-right: 40px;">
+                    <h4 style="color: var(--neon-primary); margin-top: 0;">مذكرات تفاهم (شركاء التأسيس)</h4>
+                    <ul style="font-size: 16px; color: var(--text-dim);">
+                        <li style="margin-bottom: 10px;"><i class="fa-solid fa-handshake" style="color: var(--neon-accent); margin-left: 10px;"></i> منصة غانم (Ghanem)</li>
+                        <li style="margin-bottom: 10px;"><i class="fa-solid fa-handshake" style="color: var(--neon-accent); margin-left: 10px;"></i> منصة مداك (Madak)</li>
+                        <li style="margin-bottom: 10px;"><i class="fa-solid fa-handshake" style="color: var(--neon-accent); margin-left: 10px;"></i> منصة سهل (Sahl)</li>
+                        <li style="margin-bottom: 10px;"><i class="fa-solid fa-handshake" style="color: var(--neon-accent); margin-left: 10px;"></i> DroppRWA</li>
                     </ul>
-                     <p class="mt-4 font-bold bg-green-600/20 text-green-300 p-3 rounded-md">الهدف من التمويل: الوصول إلى الجاهزية التشغيلية الكاملة والإطلاق التجاري الرسمي خلال فترة قصيرة من بدء التمويل.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</div>
 
-        <!-- Slide 6: هيكلة الملكية والحوكمة -->
-        <section class="section-card">
-            <h2 class="text-3xl font-bold mb-6 border-b-2 pb-3 accent-color">هيكلة الملكية، الحوكمة، والاستمرارية</h2>
-
-            <div class="mb-8">
-                <h3 class="text-xl font-semibold mb-3 text-gray-200">هيكلة الملكية ونسب الشراكة (المبادئ العامة)</h3>
-                <ul class="list-disc pr-5 space-y-2 text-gray-400">
-                    <li>الحفاظ على حصة مؤسسية قوية لضمان تحفيز الفريق واستمراريته.</li>
-                    <li>توزيع الحصص بطريقة تعكس مساهمة كل طرف في التمويل والجهد.</li>
-                    <li>تخصيص نسبة رمزية لخيار الموظفين المستقبلي (ESOP) لتحفيز فريق العمل.</li>
-                </ul>
+<!-- Slide 7: Financial Forecast -->
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">7. الرؤية المالية (توقعات)</h2>
+    <div class="content-area">
+        <div style="display: flex; gap: 20px; align-items: stretch; justify-content: center; margin-top: 20px;">
+            
+            <!-- Phase 1 -->
+            <div style="flex: 1; background: rgba(255,85,85,0.05); border: 1px solid #FF5555; border-radius: 12px; padding: 25px; text-align: center;">
+                <div style="color: #FF5555; font-size: 18px; margin-bottom: 10px; font-weight: bold;">المرحلة 01: 2026</div>
+                <div style="font-size: 32px; color: #fff; font-weight: 900; margin: 15px 0;">8.37 مليون</div>
+                <div style="font-size: 12px; color: var(--text-dim); font-family: monospace;">تكاليف التأسيس</div>
+                <div style="width: 100%; height: 4px; background: rgba(255,85,85,0.2); margin-top: 15px; border-radius: 2px;">
+                    <div style="width: 100%; height: 100%; background: #FF5555; box-shadow: 0 0 10px #FF5555;"></div>
+                </div>
             </div>
 
-            <div class="mb-8">
-                <h3 class="text-xl font-semibold mb-3 text-gray-200">حوكمة الشراكة وحل الخلافات</h3>
-                <ul class="list-disc pr-5 space-y-2 text-gray-400">
-                    <li>الإدارة التنفيذية للمؤسسين طالما احتفظوا بحصة الأغلبية.</li>
-                    <li>للمستثمر حق الاعتراض على القرارات الجوهرية ذات التأثير المالي المباشر.</li>
-                    <li>مجلس إدارة مصغّر لمتابعة الاتجاه الاستراتيجي.</li>
-                    <li>اعتماد التحكيم التجاري كآلية لحل النزاعات النهائية.</li>
-                </ul>
+            <!-- Phase 2 -->
+            <div style="flex: 1; background: rgba(255,215,0,0.05); border: 1px solid var(--neon-accent); border-radius: 12px; padding: 25px; text-align: center;">
+                <div style="color: var(--neon-accent); font-size: 18px; margin-bottom: 10px; font-weight: bold;">المرحلة 02: 2027</div>
+                <div style="font-size: 32px; color: #fff; font-weight: 900; margin: 15px 0;">11.45 مليون</div>
+                <div style="font-size: 12px; color: var(--text-dim); font-family: monospace;">تدفق الإيرادات</div>
+                <div style="width: 100%; height: 4px; background: rgba(255,215,0,0.2); margin-top: 15px; border-radius: 2px;">
+                    <div style="width: 40%; height: 100%; background: var(--neon-accent); box-shadow: 0 0 10px var(--neon-accent);"></div>
+                </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div style="flex: 1; background: rgba(0,240,255,0.05); border: 1px solid var(--neon-primary); border-radius: 12px; padding: 25px; text-align: center; box-shadow: 0 0 20px rgba(0,240,255,0.1);">
+                <div style="color: var(--neon-primary); font-size: 18px; margin-bottom: 10px; font-weight: bold;">المرحلة 05: 2030</div>
+                <div style="font-size: 32px; color: #fff; font-weight: 900; margin: 15px 0;">363 مليون</div>
+                <div style="font-size: 12px; color: var(--text-dim); font-family: monospace;">صافي الفائض</div>
+                <div style="width: 100%; height: 4px; background: rgba(0,240,255,0.2); margin-top: 15px; border-radius: 2px;">
+                    <div style="width: 100%; height: 100%; background: var(--neon-primary); box-shadow: 0 0 10px var(--neon-primary);"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: Setup Costs -->
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">8. تخصيص الموارد (الميزانية)</h2>
+    <div class="content-area">
+        <div class="tiled-content" style="gap: 15px;">
+            <div class="tile" style="border-color: var(--neon-primary);">
+                <div style="font-size: 24px; color: var(--neon-primary); margin-bottom: 5px;"><i class="fa-solid fa-server"></i></div>
+                <div style="font-size: 12px; color: var(--text-dim);">البنية التحتية</div>
+                <div style="font-size: 20px; font-weight: bold; color: #fff;">380 ألف</div>
+            </div>
+            <div class="tile" style="border-color: #FF5555;">
+                <div style="font-size: 24px; color: #FF5555; margin-bottom: 5px;"><i class="fa-solid fa-building-shield"></i></div>
+                <div style="font-size: 12px; color: var(--text-dim);">إيجار المقر</div>
+                <div style="font-size: 20px; font-weight: bold; color: #fff;">240 ألف</div>
+            </div>
+            <div class="tile" style="border-color: var(--neon-accent);">
+                <div style="font-size: 24px; color: var(--neon-accent); margin-bottom: 5px;"><i class="fa-solid fa-file-contract"></i></div>
+                <div style="font-size: 12px; color: var(--text-dim);">قانونية / تجريبية</div>
+                <div style="font-size: 20px; font-weight: bold; color: #fff;">250 ألف</div>
+            </div>
+            <div class="tile" style="border-color: #7000FF;">
+                <div style="font-size: 24px; color: #7000FF; margin-bottom: 5px;"><i class="fa-solid fa-cloud"></i></div>
+                <div style="font-size: 12px; color: var(--text-dim);">خدمات أمازون الويب السحابية</div>
+                <div style="font-size: 20px; font-weight: bold; color: #fff;">120 ألف</div>
+            </div>
+            <div class="tile" style="border-color: var(--neon-primary);">
+                <div style="font-size: 24px; color: var(--neon-primary); margin-bottom: 5px;"><i class="fa-solid fa-palette"></i></div>
+                <div style="font-size: 12px; color: var(--text-dim);">الهوية البصرية</div>
+                <div style="font-size: 20px; font-weight: bold; color: #fff;">50 ألف</div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 20px; font-size: 14px; font-family: monospace; color: var(--neon-primary);">إجمالي النفقات الرأسمالية: 1,090,000 ريال</p>
+    </div>
+</div>
+
+<!-- Slide 9: Revenue Model (New) -->
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">9. مصادر الدخل (نموذج الإيرادات)</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <!-- Listing Fees -->
+            <div class="tile" style="border-top: 3px solid var(--neon-primary);">
+                <div class="icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                <h3>رسوم الإدراج</h3>
+                <div style="font-size: 32px; font-weight: 900; color: #fff; margin: 10px 0;">25,000 <span style="font-size: 16px;">ريال</span></div>
+                <p>رسوم تأسيس لكل عقار جديد.</p>
+            </div>
+            <!-- Sales Commission -->
+            <div class="tile" style="border-top: 3px solid var(--neon-secondary);">
+                <div class="icon" style="color: var(--neon-secondary);"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                <h3>عمولة البيع</h3>
+                <div style="font-size: 32px; font-weight: 900; color: #fff; margin: 10px 0;">2.5%</div>
+                <p>من إجمالي قيمة الأصل المباع.</p>
+            </div>
+            <!-- Admin Fees -->
+            <div class="tile" style="border-top: 3px solid var(--neon-accent);">
+                <div class="icon" style="color: var(--neon-accent);"><i class="fa-solid fa-user-tie"></i></div>
+                <h3>رسوم إدارية</h3>
+                <div style="font-size: 32px; font-weight: 900; color: #fff; margin: 10px 0;">1%</div>
+                <p>رسوم تشغيلية سنوية.</p>
+            </div>
+            <!-- Trading Fees -->
+            <div class="tile" style="border-top: 3px solid #FF5555;">
+                <div class="icon" style="color: #FF5555;"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
+                <h3>رسوم التداول</h3>
+                <div style="font-size: 32px; font-weight: 900; color: #fff; margin: 10px 0;">0.5%</div>
+                <p>من كل طرف (بائع ومشتري).</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 10: Market Data -->
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">10. حجم السوق (تحليل البيانات)</h2>
+    <div class="content-area">
+        <div class="two-column" style="gap: 30px;">
+            <div class="market-stat-box" style="border: 1px solid var(--neon-accent);">
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid rgba(255,215,0,0.2); padding-bottom: 10px; margin-bottom: 15px;">
+                    <h3 style="color: var(--neon-accent) !important;">السوق السعودي (REGA)</h3>
+                    <i class="fa-solid fa-chart-pie" style="color: var(--neon-accent);"></i>
+                </div>
+                
+                <div class="stat-row">
+                    <span class="stat-label">مساهمة القطاع الخاص:</span>
+                    <span class="stat-value">26.5%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">صفقات تجارية:</span>
+                    <span class="stat-value">46.50 مليار</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">نمو الصفقات السكنية:</span>
+                    <span class="growth-rate">▲ 42.5%</span>
+                </div>
+                <div class="stat-row" style="border-bottom: none;">
+                    <span class="stat-label">ارتفاع الإيجارات التجارية:</span>
+                    <span class="growth-rate" style="border-color: var(--neon-primary); color: var(--neon-primary); background: rgba(0,240,255,0.1);">▲ 7.6%</span>
+                </div>
             </div>
             
-            <div class="mb-8">
-                <h3 class="text-xl font-semibold mb-3 text-gray-200">نصائح لضمان استمرارية العمل والشراكة</h3>
-                <ul class="list-disc pr-5 space-y-2 text-gray-400">
-                    <li>الشفافية الكاملة في التقارير التشغيلية والمالية.</li>
-                    <li>توثيق الحصص والصلاحيات وآليات التخارج في عقد واضح ومحدث.</li>
-                    <li>تطبيق نظام تملك تدريجي للحصص يربط استمرار الشركاء بتحقيق الأهداف المرحلية.</li>
+            <div class="market-stat-box" style="border: 1px solid var(--neon-primary);">
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid rgba(0,240,255,0.2); padding-bottom: 10px; margin-bottom: 15px;">
+                    <h3 style="color: var(--neon-primary) !important;">البلوك تشين (عالمياً)</h3>
+                    <i class="fa-solid fa-globe" style="color: var(--neon-primary);"></i>
+                </div>
+                <div class="stat-row"><span class="stat-label">الحجم الحالي (24-25):</span><span class="stat-value">32.99 مليار $</span></div>
+                <div class="stat-row"><span class="stat-label">توقعات 2030:</span><span class="stat-value text-accent">1.4 تريليون $</span></div>
+                <div class="stat-row"><span class="stat-label">النمو السنوي:</span><span class="growth-rate">▲ 64% - 90%</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 11: Competitors Radar (New 2025 Analysis) -->
+<div class="slide-container" id="slide11">
+    <h2 class="slide-title">11. رادار المنافسين (تحليل 2025)</h2>
+    <div class="content-area">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; height: 100%;">
+            
+            <!-- Direct Competitors -->
+            <div class="content-box" style="padding: 25px; border-top: 3px solid var(--neon-primary); background: linear-gradient(180deg, rgba(0,240,255,0.05), transparent); display: flex; flex-direction: column;">
+                <div style="display:flex; justify-content:space-between; margin-bottom: 20px; align-items: center;">
+                    <h3 style="color: var(--neon-primary); font-size: 20px; margin:0;">المنافسون المباشرون</h3>
+                    <span style="font-size: 12px; background: rgba(0,240,255,0.1); border: 1px solid var(--neon-primary); padding: 4px 10px; border-radius: 20px; color: #fff;">الملكية وتجزئة الأصول</span>
+                </div>
+                
+                <ul style="font-size: 15px; color: var(--text-dim); flex-grow: 1;">
+                    <li style="margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <strong style="color: #fff; font-size: 16px;">غانم:</strong> <span style="color: var(--neon-accent);">قوة تمويلية</span> (جولة استثمارية 7.1 مليون دولار) + العمل ضمن البيئة التجريبية لهيئة العقار.
+                    </li>
+                    <li style="margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <strong style="color: #fff; font-size: 16px;">مداك:</strong> ميزة <span style="color: var(--neon-accent);">السبق والانتشار</span> الإقليمي + انضمام رسمي للبيئة التجريبية لهيئة العقار.
+                    </li>
+                    <li style="margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <strong style="color: #fff; font-size: 16px;">سهل:</strong> نموذج هجين (ملكية جزئية تقنية بدءاً من 1000 ريال + تمويل مرابحة من البنك المركزي).
+                    </li>
+                    <li style="border: none;">
+                        <strong style="color: #fff; font-size: 16px;">جوزو:</strong> تمويل المشاريع الكبرى (مرابحة).
+                    </li>
                 </ul>
             </div>
 
-            <div class="mb-8">
-                <h3 class="text-xl font-semibold mb-3 text-gray-200">آلية الاستحقاق (Vesting)</h3>
-                <ul class="list-disc pr-5 space-y-2 text-gray-400">
-                    <li>يمكن النقاش حول نظام تملك تدريجي لحصص المؤسسين على مدى فترة محددة باتفاقية واضحة.</li>
-                    <li>فترة حجز أولية (Cliff) تليها استحقاقات دورية لضمان التزام المؤسسين والمطورين الأساسيين.</li>
-                </ul>
+            <!-- Indirect Competitors & Global Benchmark -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <!-- Indirect -->
+                <div class="content-box" style="padding: 20px; border-top: 3px solid #FF5555; background: linear-gradient(180deg, rgba(255,85,85,0.05), transparent); flex: 1;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom: 15px; align-items: center;">
+                        <h3 style="color: #FF5555; font-size: 18px; margin:0;">المنافسون غير المباشرين</h3>
+                        <span style="font-size: 12px; background: rgba(255,85,85,0.1); border: 1px solid #FF5555; padding: 4px 10px; border-radius: 20px; color: #fff;">التمويل بالدين والصكوك</span>
+                    </div>
+                    <ul style="font-size: 14px; color: var(--text-dim);">
+                        <li style="margin-bottom: 10px;">
+                            <strong style="color: #fff;">أصيل:</strong> <span style="color: var(--neon-accent);">موثوقية تنظيمية</span> عالية (ترخيص هيئة السوق المالية) عبر صناديق الملكية.
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <strong style="color: #fff;">ترميز المالية:</strong> تمويل المطورين عبر الصكوك (بديل للشركات).
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <strong style="color: #fff;">ذرى:</strong> تمويل المقاولين بالدين والفواتير (ترخيص البنك المركزي).
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Global Standard -->
+                <div class="content-box" style="padding: 20px; border: 1px dashed var(--neon-secondary); background: rgba(112, 0, 255, 0.05);">
+                    <div style="display:flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <i class="fa-solid fa-globe" style="color: var(--neon-secondary);"></i>
+                        <h3 style="color: #fff; font-size: 16px; margin:0;">المعيار العالمي (للمقارنة)</h3>
+                    </div>
+                    <p style="font-size: 14px; color: var(--text-dim); margin: 0;">
+                        <strong style="color: #fff;">بروبي (Propy):</strong> المعيار العالمي لدمج البلوك تشين مع الإجراءات القانونية والعقود الذكية.
+                    </p>
+                </div>
+
+                <!-- THIX Advantage -->
+                <div style="padding: 15px; background: var(--neon-primary); color: #000; border-radius: 12px; text-align: center; margin-top: auto;">
+                    <strong style="font-size: 16px;">ميزة THIX:</strong> سد فجوة "السوق الثانوي الفوري" التي يفتقدها المنافسون المحليون.
+                </div>
             </div>
             
-            <div class="bg-red-50 border-r-4 border-accent-color p-4 rounded-md mt-6">
-                <h3 class="text-xl font-bold warning-box-header mb-2">⚠ تحذير استراتيجي</h3>
-                <p class="warning-box-text">ضرورة الحذر من فقدان السيطرة الإدارية للمؤسسين عند التوسع بجولات تمويل مستقبلية.</p>
-                <p class="warning-box-text mt-2 font-bold">التوصية بالتفاوض الذكي على نسب المستثمر لضمان توازن القرار وتحفيز الفريق المؤسس.</p>
-            </div>
-        </section>
+        </div>
+    </div>
+</div>
 
-    </main>
+<!-- Slide 18: Risk Analysis -->
+<div class="slide-container" id="slide18">
+    <h2 class="slide-title">18. التحديات والحماية والأمان</h2>
+    <div class="content-area">
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+            <div class="risk-card" style="border-top-color: #FF5555; background: linear-gradient(180deg, rgba(255,85,85,0.05), transparent);">
+                <div class="risk-header"><i class="fa-solid fa-shield-halved" style="color: #FF5555;"></i> <h3 style="margin:0; font-size:16px; color:#FF5555;">التهديد: تنظيمي</h3></div>
+                <p style="font-size: 13px;">تأخر التصاريح الحكومية.</p>
+                <div class="risk-owner">التخفيف: وحدة الامتثال</div>
+            </div>
+            <div class="risk-card" style="border-top-color: var(--neon-primary); background: linear-gradient(180deg, rgba(0,240,255,0.05), transparent);">
+                <div class="risk-header"><i class="fa-solid fa-code" style="color: var(--neon-primary);"></i> <h3 style="margin:0; font-size:16px; color:var(--neon-primary);">التهديد: عقود ذكية</h3></div>
+                <p style="font-size: 13px;">ثغرات برمجية في الحصة.</p>
+                <div class="risk-owner">التخفيف: تدقيق بالذكاء الاصطناعي</div>
+            </div>
+            <div class="risk-card" style="border-top-color: var(--neon-accent); background: linear-gradient(180deg, rgba(255,215,0,0.05), transparent);">
+                <div class="risk-header"><i class="fa-solid fa-chart-area" style="color: var(--neon-accent);"></i> <h3 style="margin:0; font-size:16px; color:var(--neon-accent);">التهديد: تقلب السوق</h3></div>
+                <p style="font-size: 13px;">تقلبات أسعار العقار.</p>
+                <div class="risk-owner">التخفيف: التنويع</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 19: AI Core -->
+<div class="slide-container" id="slide19">
+    <h2 class="slide-title">19. تكامل النواة الذكية (AI)</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile" style="border: 1px solid var(--neon-secondary); box-shadow: 0 0 15px rgba(112,0,255,0.1);">
+                <div class="icon" style="color: var(--neon-secondary); text-shadow: 0 0 10px var(--neon-secondary);"><i class="fa-solid fa-brain"></i></div>
+                <h3 style="color: var(--neon-secondary);">استبدال الوظائف بالـ AI</h3>
+                <p>استخدام الذكاء الاصطناعي لتقليل الحاجة إلى التدخل البشري في عمليات التقييم والتدقيق العقاري.</p>
+            </div>
+            <div class="tile" style="border: 1px solid var(--neon-primary);">
+                <div class="icon"><i class="fa-solid fa-robot"></i></div>
+                <h3 style="color: var(--neon-primary);">الأتمتة المتقدمة</h3>
+                <p>إنشاء عقود ذكية تلقائية وإجراء فحص أمني للثغرات باستخدام خوارزميات AI المتطورة.</p>
+            </div>
+            <div class="tile" style="border: 1px solid #fff;">
+                <div class="icon" style="color: #fff; text-shadow: 0 0 10px #fff;"><i class="fa-solid fa-user-check"></i></div>
+                <h3>تحليل السوق والتنبؤ</h3>
+                <p>الاعتماد على AI لتحليل بيانات السوق الضخمة وتوفير رؤى تنبؤية دقيقة لتوجيه قرارات المستثمرين.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 21: Closing -->
+<div class="slide-container" id="slide21" style="justify-content: center; align-items: center; text-align: center;">
+    <div style="width: 150px; height: 150px; border: 2px solid var(--neon-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: pulse 3s infinite;">
+        <span class="thix-logo" style="font-size: 48px;">THIX</span>
+    </div>
+    <h1 style="font-size: 60px; margin: 30px 0 10px 0;">النظام جاهز</h1>
+    <p style="font-size: 24px; letter-spacing: 4px; color: var(--text-dim); margin-bottom: 20px;">جاري تهيئة المستقبل...</p>
+    <p style="font-size: 18px; color: var(--neon-primary); font-family: monospace; margin-bottom: 40px;">www.thix.sa</p>
     
-    <footer class="text-center text-gray-500 py-6 text-sm">
-        <p class="text-gray-400">&copy; 2025 Saudi Pro - جميع الحقوق محفوظة. التقرير معدّ للعرض الداخلي.</p>
-        <p class="text-gray-400 mt-2">إعداد: محمد المصعبي</p>
-    </footer>
+    <div style="background: rgba(255,255,255,0.05); padding: 20px 40px; border-radius: 12px; border: 1px solid var(--glass-border);">
+        <h3 style="color: #fff; margin: 0 0 5px 0;">م. وليد محمد المصعبي</h3>
+        <p style="font-size: 14px; font-family: monospace; color: var(--neon-primary); margin: 0;">الجوال: 0536669938 | البريد: w.masaabi@gmail.com</p>
+    </div>
+</div>
 
 </body>
 </html>
-
